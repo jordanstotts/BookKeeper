@@ -3,7 +3,7 @@ const router = express.Router()
 const BookList = require('./BookList')
 
 // Get request for all tasks
-router.get('/', async (req, res, next) => {
+router.get('/book-list', async (req, res, next) => {
     try {
         const books = await BookList.find({})
         res.json(books)
