@@ -20,8 +20,17 @@ app.get('/', (req, res) => {
 
 //Controllers
 const BookListController = require('./BookListController')
-app.use('/BookList', BookListController)
+app.use('./BookList', BookListController)
 
+const BookList = require('./BookList')
+app.post('/add-book', async (req, res, next) => {
+    try {
+        const newBook = await BookList.create(req.body)
+        res.status(201).json(newBook)
+    } catch (err) {
+        next(err)
+    }
+})
 
 app.use((err, req, res, next) => {
     const statusCode = res.statusCode || 500

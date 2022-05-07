@@ -23,7 +23,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // Create new task
-router.post('/', async (req, res, next) => {
+router.post('/add-book', async (req, res, next) => {
     try {
         const newBook = await BookList.create(req.body)
         res.status(201).json(newBook)
