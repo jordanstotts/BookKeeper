@@ -24,9 +24,14 @@ app.use('./BookList', BookListController)
 
 // Get request for all tasks
 app.get('/book-list', async (req, res, next) => {
+    const books = await BookList.find({})
     try {
-        const books = await BookList.find({})
-        res.json(books)
+        res.status(200).json({
+            status : 'Success',
+            data : {
+                books
+            }
+        })
     } catch (err) {
         next(err)
     }
