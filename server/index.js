@@ -3,7 +3,7 @@ const express = require('express')
 require('./connection') //solved postman issue
 const app = express()
 
-app.set('port', 6000)
+app.set('port', 6001)
 const cors = require('cors')
 app.use(cors())
 
