@@ -6,9 +6,10 @@ function App() {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [genre, setGenre] = useState('')
+  const [notes, setNotes] = useState('')
   
   const addNewBook = () => {
-    Axios.post('http://localhost:6001/add-book',{title, author, genre})
+    Axios.post('http://localhost:6001/add-book',{title, author, genre, notes})
   }
 
 // getting / displaying books 
@@ -24,8 +25,8 @@ function App() {
 // updating books
 const [newBook, setNewBook] = useState('')
  
-const updateBook = (bookId) =>{
-  Axios.put(`http://localhost:6001/update-book/:id`,{bookId, newBook})
+const updateBook = async (id) =>{
+  await Axios.put(`http://localhost:6001/update-book/${id}`,{id, newBook})
 }
 
 
@@ -44,6 +45,8 @@ const deleteBook = (id) => {
         <input type="text" onChange={(e) => {setAuthor(e.target.value)}}/><br/><br/>
         <label htmlFor="">Genre: </label>
         <input type="text" onChange={(e) => {setGenre(e.target.value)}}/><br/><br/>
+        <label htmlFor="">Notes: </label>
+        <textarea class="form-control" aria-label="With textarea" onChange={(e) => {setNotes(e.target.value)}}></textarea><br/><br/>
 
         <button onClick={addNewBook}>Add New Book</button>
 
@@ -57,6 +60,7 @@ const deleteBook = (id) => {
           <h1>{val.title}</h1>
           <h1>{val.author}</h1>
           <h1>{val.genre}</h1>
+          <h1>{val.notes}</h1>
           <input type="text" placeholder='update Book...' onChange={(e) => {
               setNewBook(e.target.value)
             }}/>
@@ -67,22 +71,6 @@ const deleteBook = (id) => {
     }
 
   </div>
-
-  {/* <div className="container">
-      {
-        phonebook.map((val,key) => {
-          return <div key={key} className="phone" >
-            <h1>{val.name}</h1>
-            <h1>{val.phone}</h1>
-            <input type="number" placeholder='update Phone...' onChange={(e) => {
-              setNewPhone(e.target.value)
-            }}/>
-            <button className="update-btn"  onClick={() => {updatePhone(val._id)}}>Update</button>
-          </div>
-        })
-      }
-
-    </div>  */}
   </div>
   );
 }

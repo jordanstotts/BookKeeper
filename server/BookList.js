@@ -12,6 +12,10 @@ const BookListSchema = new mongoose.Schema({
     genre : {
         type: String, 
         required: true
+    },
+    notes : {
+        type: String, 
+        required: true
     }
 })
 

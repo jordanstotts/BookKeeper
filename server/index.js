@@ -49,26 +49,26 @@ app.post('/add-book', async (req, res, next) => {
 })
 
 // Edit a task
-app.put('update-book/:id', async (req, res, next) => {
-    try {
-        const bookToUpdate = await BookList.findOneAndUpdate(
-            req.params.id,
-            req.body,
-            {
-                new: true
-            }
-        )
-        if (bookToUpdate) {
-            res.json(bookToUpdate)
-        } else {
-            res.sendStatus(404)
-        }
-    } catch (err) {
-        next(err)
-    }
-})
+// app.put('update-book/:id', async (req, res, next) => {
+//     try {
+//         const bookToUpdate = await BookList.findOneAndUpdate(
+//             req.params.id,
+//             req.body,
+//             {
+//                 new: true
+//             }
+//         )
+//         if (bookToUpdate) {
+//             res.json(bookToUpdate)
+//         } else {
+//             res.sendStatus(404)
+//         }
+//     } catch (err) {
+//         next(err)
+//     }
+// })
 
-// app.patch('/update-book/:id', async (req,res) => {
+// app.put('/update-book/:id', async (req,res) => {
 //     const updatedBook = await BookList.findByIdAndUpdate(req.params.id,req.body,{
 //         new : true,
 //         runValidators : true
@@ -84,6 +84,23 @@ app.put('update-book/:id', async (req, res, next) => {
 //         console.log(err)
 //     }
 // })
+
+app.put('update-book/:id', async (req, res) => {
+    const updatedBook = req.body.updatedBook
+    const id = req.body.id
+
+    try {
+        
+        await BookList.findById(id, (error, bookToUpdate) => {
+            bookToUpdate.title = updatedBook
+            bookToUpdate.save()
+        })
+    } catch (err) {
+        console.log(err)
+    }
+
+    res.send('Book updated')
+})
 
 // Delete a task
 app.delete('/delete-book/:id', async(req, res, next) => {
