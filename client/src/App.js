@@ -23,10 +23,13 @@ function App() {
 
 
 // updating books
-const [newBook, setNewBook] = useState('')
+const [newNotes, setNewNotes] = useState('')
  
-const updateBook = async (id) =>{
-  await Axios.put(`http://localhost:6001/update-book/${id}`,{id, newBook})
+// const updateNotes = async (id) =>{
+//   await Axios.put(`http://localhost:6001/update-notes/${id}`,{id, newNotes})
+// }
+const updateNotes = (id) => {
+  Axios.put('http://localhost:6001/update-notes', {id: id, newNotes: newNotes})
 }
 
 
@@ -46,7 +49,7 @@ const deleteBook = (id) => {
         <label htmlFor="">Genre: </label>
         <input type="text" onChange={(e) => {setGenre(e.target.value)}}/><br/><br/>
         <label htmlFor="">Notes: </label>
-        <textarea class="form-control" aria-label="With textarea" onChange={(e) => {setNotes(e.target.value)}}></textarea><br/><br/>
+        <textarea aria-label="With textarea" onChange={(e) => {setNotes(e.target.value)}}></textarea><br/><br/>
 
         <button onClick={addNewBook}>Add New Book</button>
 
@@ -61,10 +64,10 @@ const deleteBook = (id) => {
           <h1>{val.author}</h1>
           <h1>{val.genre}</h1>
           <h1>{val.notes}</h1>
-          <input type="text" placeholder='update Book...' onChange={(e) => {
-              setNewBook(e.target.value)
+          <input type="text" placeholder='Update Notes...' onChange={(e) => {
+              setNewNotes(e.target.value)
             }}/>
-            <button className="update-btn"  onClick={() => {updateBook(val._id)}}>Update</button>
+            <button className="update-btn"  onClick={() => {updateNotes(val._id)}}>Update</button>
             <button  className='delete-btn'onClick={() =>{deleteBook(val._id)}}>Delete</button>
         </div>
       })

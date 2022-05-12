@@ -49,17 +49,17 @@ app.post('/add-book', async (req, res, next) => {
 })
 
 // Edit a task
-// app.put('update-book/:id', async (req, res, next) => {
+// app.put('update-notes/:id', async (req, res, next) => {
 //     try {
-//         const bookToUpdate = await BookList.findOneAndUpdate(
+//         const notesToUpdate = await BookList.findOneAndUpdate(
 //             req.params.id,
 //             req.body,
 //             {
 //                 new: true
 //             }
 //         )
-//         if (bookToUpdate) {
-//             res.json(bookToUpdate)
+//         if (notesToUpdate) {
+//             res.json(notesToUpdate)
 //         } else {
 //             res.sendStatus(404)
 //         }
@@ -67,6 +67,20 @@ app.post('/add-book', async (req, res, next) => {
 //         next(err)
 //     }
 // })
+app.put('/update-notes', async (req, res) => {
+    const newNotes = req.body.newNotes
+    const id = req.body.id
+
+    try {
+        await BookList.findById(id, (err, updatedNotes) => {
+            updatedNotes.notes = newNotes
+            updatedNotes.save()
+            res.send('update')
+        })
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 // app.put('/update-book/:id', async (req,res) => {
 //     const updatedBook = await BookList.findByIdAndUpdate(req.params.id,req.body,{
@@ -85,22 +99,22 @@ app.post('/add-book', async (req, res, next) => {
 //     }
 // })
 
-app.put('update-book/:id', async (req, res) => {
-    const updatedBook = req.body.updatedBook
-    const id = req.body.id
+// app.put('update-book/:id', async (req, res) => {
+//     const updatedBook = req.body.updatedBook
+//     const id = req.body.id
 
-    try {
+//     try {
         
-        await BookList.findById(id, (error, bookToUpdate) => {
-            bookToUpdate.title = updatedBook
-            bookToUpdate.save()
-        })
-    } catch (err) {
-        console.log(err)
-    }
+//         await BookList.findById(id, (error, bookToUpdate) => {
+//             bookToUpdate.title = updatedBook
+//             bookToUpdate.save()
+//         })
+//     } catch (err) {
+//         console.log(err)
+//     }
 
-    res.send('Book updated')
-})
+//     res.send('Book updated')
+// })
 
 // Delete a task
 app.delete('/delete-book/:id', async(req, res, next) => {
