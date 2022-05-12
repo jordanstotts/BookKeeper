@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 import './App.css';
 function App() {
-
+// adding a book
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [genre, setGenre] = useState('')
@@ -11,7 +11,7 @@ function App() {
     Axios.post('http://localhost:6001/add-book',{title, author, genre})
   }
 
-  
+// getting / displaying books 
   const [unreadBooks, setUnreadBooks] = useState([])
 
   useEffect(() => {
@@ -19,6 +19,14 @@ function App() {
       setUnreadBooks(res.data.data.books)
     })
   },[])
+
+
+// updating books
+const [newBook, setNewBook] = useState('')
+ 
+const updateBook = (id) =>{
+  Axios.put(`http://localhost:6001/${id}`,{id, newBook})
+}
 
   return (
     <div>
@@ -43,11 +51,31 @@ function App() {
           <h1>{val.title}</h1>
           <h1>{val.author}</h1>
           <h1>{val.genre}</h1>
+          <input type="text" placeholder='update Book...' onChange={(e) => {
+              setNewBook(e.target.value)
+            }}/>
+            <button className="update-btn"  onClick={() => {updateBook(val._id)}}>Update</button>
         </div>
       })
     }
 
   </div>
+
+  {/* <div className="container">
+      {
+        phonebook.map((val,key) => {
+          return <div key={key} className="phone" >
+            <h1>{val.name}</h1>
+            <h1>{val.phone}</h1>
+            <input type="number" placeholder='update Phone...' onChange={(e) => {
+              setNewPhone(e.target.value)
+            }}/>
+            <button className="update-btn"  onClick={() => {updatePhone(val._id)}}>Update</button>
+          </div>
+        })
+      }
+
+    </div>  */}
   </div>
   );
 }
