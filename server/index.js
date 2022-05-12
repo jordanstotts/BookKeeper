@@ -49,7 +49,7 @@ app.post('/add-book', async (req, res, next) => {
 })
 
 // Edit a task
-app.put('/:id', async (req, res, next) => {
+app.put('update-book/:id', async (req, res, next) => {
     try {
         const bookToUpdate = await BookList.findOneAndUpdate(
             req.params.id,
@@ -68,8 +68,25 @@ app.put('/:id', async (req, res, next) => {
     }
 })
 
+// app.patch('/update-book/:id', async (req,res) => {
+//     const updatedBook = await BookList.findByIdAndUpdate(req.params.id,req.body,{
+//         new : true,
+//         runValidators : true
+//       })
+//     try{
+//         res.status(200).json({
+//             status : 'Success',
+//             data : {
+//               updatedBook
+//             }
+//           })
+//     }catch(err){
+//         console.log(err)
+//     }
+// })
+
 // Delete a task
-app.delete('/:id', async(req, res, next) => {
+app.delete('/delete-book/:id', async(req, res, next) => {
     try {
         const bookToDelete = await BookList.findByIdAndDelete(req.params.id)
         console.log(bookToDelete)

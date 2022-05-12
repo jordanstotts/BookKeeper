@@ -24,8 +24,14 @@ function App() {
 // updating books
 const [newBook, setNewBook] = useState('')
  
-const updateBook = (id) =>{
-  Axios.put(`http://localhost:6001/${id}`,{id, newBook})
+const updateBook = (bookId) =>{
+  Axios.put(`http://localhost:6001/update-book/:id`,{bookId, newBook})
+}
+
+
+// delete books
+const deleteBook = (id) => {
+  Axios.delete(`http://localhost:6001/delete-book/${id}`)
 }
 
   return (
@@ -55,6 +61,7 @@ const updateBook = (id) =>{
               setNewBook(e.target.value)
             }}/>
             <button className="update-btn"  onClick={() => {updateBook(val._id)}}>Update</button>
+            <button  className='delete-btn'onClick={() =>{deleteBook(val._id)}}>Delete</button>
         </div>
       })
     }
