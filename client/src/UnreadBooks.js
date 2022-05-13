@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import Axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { text } from "express";
 
 const UnreadBooks = () => {
   // getting / displaying books
@@ -26,44 +27,96 @@ const UnreadBooks = () => {
     Axios.delete(`http://localhost:6001/delete-book/${id}`);
   };
 
-  return (
-          <div className="container">
-        <h1>Unread Books</h1>
-        {unreadBooks.map((val, key) => {
-          return (
-            <div key={key} className="book">
-              <h1>{val.title}</h1>
-              <h1>{val.author}</h1>
-              <h1>{val.genre}</h1>
-              <h1>{val.notes}</h1>
-              <input
-                type="text"
-                placeholder="Update Notes..."
-                onChange={(e) => {
-                  setNewNotes(e.target.value);
-                }}
-              />
-              <button
-                className="update-btn"
-                onClick={() => {
-                  updateNotes(val._id);
-                }}
-              >
-                Update
-              </button>
-              <button
-                className="delete-btn"
-                onClick={() => {
-                  deleteBook(val._id);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
-      </div>
-  )
-}
+//   const btn = document.getElementById('btn');
 
-export default UnreadBooks
+//   btn.addEventListener('click', function onClick(event) {
+//     //  Change text color globally
+//     // document.body.style.color = 'darkgreen';
+  
+//     //  Change text color for clicked element only
+//     event.target.style.color = 'salmon';
+//   });
+
+// const finishedBooks = () => {
+//     // getting / displaying books
+//     const [, setUnreadBooks] = useState([]);
+  
+//     useEffect(() => {
+//       Axios.get("http://localhost:6001/book-list").then((res) => {
+//         setUnreadBooks(res.data.data.books);
+//       });
+//     }, []);
+// const [isFinished, setIsFinished] = useState(false)
+// const finishedBook = () => {
+//     // completedBooks = []
+//     setIsFinished = true
+//     // if (isFinished === true) {
+//     //     completedBooks.push()
+//     // }
+// }
+//   const btn = document.getElementById('btn');
+
+//   btn.addEventListener('click', function onClick(event) {
+//     //  Change text color globally
+//     // document.body.style.color = 'darkgreen';
+  
+//     //  Change text color for clicked element only
+//     event.target.style.color = 'salmon';
+//   });
+
+
+
+  return (
+    <div className="container">
+      <h1>Unread Books</h1>
+      {unreadBooks.map((val, key) => {
+        return (
+            // <div style={{backgroundColor: 'green'}}>
+          <div key={key} className="book">
+            <h3>
+              <>Title: </>
+              {val.title}
+            </h3>
+            <p>Author: {val.author}</p>
+            <p>Genre: {val.genre}</p>
+            <p>Notes: {val.notes}</p>
+            <input
+              type="text"
+              placeholder="Update Notes..."
+              onChange={(e) => {
+                setNewNotes(e.target.value);
+              }}
+            />
+            {/* </div> */}
+            <button
+              className="update-btn"
+              onClick={() => {
+                updateNotes(val._id);
+              }}
+            >
+              Update
+            </button>
+            <button
+              className="delete-btn"
+              onClick={() => {
+                deleteBook(val._id);
+              }}
+            >
+              Delete
+            </button>
+            <button
+            id="btn"
+              className="finished-btn"
+            
+            >
+              Finished
+              {/* Add emoji green check here */}
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default UnreadBooks;
