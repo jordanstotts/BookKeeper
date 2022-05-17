@@ -1,3 +1,43 @@
+.delete-btn {
+  margin: 7px auto auto 7px;
+  height: 30px;
+  width: 30px;
+  color: red;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.delete-btn:hover {
+  background-color: red;
+  color: black;
+  cursor: pointer;
+}
+
+.finished-btn {
+  padding: 0;
+  border: none;
+  border: 1.5px solid black;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.finishedBtnDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.finished-btn:hover {
+  border: 1.5px solid black;
+  cursor: pointer;
+  background-color: #00d800;
+}
+
 h1.unreadHeader {
   display: flex;
   justify-content: center;
@@ -5,8 +45,6 @@ h1.unreadHeader {
 
 .unreadBooksList {
   display: flex;
-  height: 700px;
-  width: 700px;
   margin: auto 75px 100px 75px;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -15,20 +53,33 @@ h1.unreadHeader {
 .book {
   margin: 25px;
   justify-content: center;
+  border: 1.5px solid lightblue;
+  background-color: #6bc0f9b0;
+  height: 450px;
+  width: 400px;
 }
 
 .title {
   margin: 0px;
+  text-align: center;
+  text-decoration: underline;
+  padding: 10px;
 }
 
 .author {
   margin: 0px;
+  text-align: center;
+  padding: 3px;
 }
 
 .genre {
   margin: 0px;
+  text-align: center;
+  padding: 1.5px;
 }
 
 .notes {
   margin: 0px;
+  padding: 15px;
+  text-align: center;
 }

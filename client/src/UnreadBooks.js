@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import "./css/UnreadBooks.css"
-
+import "./css/UnreadBooks.css";
 
 const UnreadBooks = () => {
   // getting / displaying books
@@ -43,49 +42,53 @@ const UnreadBooks = () => {
       </div>
       <h1 className="unreadHeader">Unread Books</h1>
       <div className="unreadBooksList">
-      {unreadBooks.map((val, key) => {
-        return (
-          <div key={key} className="book">
-            <h1 className="title">{val.title}</h1>
-            <h3 className="author">{val.author}</h3>
-            <h3 className="genre">{val.genre}</h3>
-            <p className="notes">{val.notes}</p>
-            {/* <div id='finished'></div> */}
-            <input
-              type="text"
-              placeholder="Update Notes..."
-              onChange={(e) => {
-                setNewNotes(e.target.value);
-              }}
-            />
-            <button
-              className="update-btn"
-              onClick={() => {
-                updateNotes(val._id);
-              }}
-            >
-              Update
-            </button>
-            <button
-              className="delete-btn"
-              onClick={() => {
-                deleteBook(val._id);
-              }}
-            >
-              Delete
-            </button>
-            <button
-              className="finished-btn"
-              onClick={() => {
-                finishedBook();
-              }}
-            >
-              Finished
-            </button>
-          </div>
-        );
-      })}
-      <div id="finished"></div>
+        {unreadBooks.map((val, key) => {
+          return (
+            <div key={key} className="book">
+              <button
+                className="delete-btn"
+                onClick={() => {
+                  deleteBook(val._id);
+                }}
+              >
+                X
+              </button>
+
+              <h1 className="title">{val.title}</h1>
+              <h4 className="author">{val.author}</h4>
+              <h5 className="genre">{val.genre}</h5>
+              <p className="notes">{val.notes}</p>
+
+              <textarea
+                type="text"
+                placeholder="Update Notes..."
+                onChange={(e) => {
+                  setNewNotes(e.target.value);
+                }}
+              />
+              <button
+                className="update-btn"
+                onClick={() => {
+                  updateNotes(val._id);
+                }}
+              >
+                Update
+              </button>
+              <br></br>
+              <div className="finishedBtnDiv">
+                <button
+                  className="finished-btn"
+                  onClick={() => {
+                    finishedBook();
+                  }}
+                >
+                  ✅
+                </button>
+              </div>
+            </div>
+          );
+        })}
+        <div id="finished"></div>
       </div>
     </div>
   );
