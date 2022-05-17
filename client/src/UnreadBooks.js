@@ -41,15 +41,15 @@ const UnreadBooks = () => {
         <a href="/unread-books">Unread Books</a>
         <a href="/add-book">Add Book</a>
       </div>
-      <h1>Unread Books</h1>
+      <h1 className="unreadHeader">Unread Books</h1>
       <div className="unreadBooksList">
       {unreadBooks.map((val, key) => {
         return (
           <div key={key} className="book">
-            <h1>{val.title}</h1>
-            <h3>{val.author}</h3>
-            <h3>{val.genre}</h3>
-            <p>{val.notes}</p>
+            <h1 className="title">{val.title}</h1>
+            <h3 className="author">{val.author}</h3>
+            <h3 className="genre">{val.genre}</h3>
+            <p className="notes">{val.notes}</p>
             {/* <div id='finished'></div> */}
             <input
               type="text"
