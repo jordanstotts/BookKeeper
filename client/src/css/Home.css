@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+body {
+  background-color: #ffbb00;
+}
+
+.homeHeader {
+  font-size: 80pt;
+  font-family: "Lobster", cursive;
+  text-align: center;
+  margin: 150px auto auto auto;
+}
+
+.homeLinks {
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+  margin: 75px auto 100px auto;
+  font-size: 16pt;
+}
+
+a {
+  text-decoration: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  color: black;
+}
+
+a:hover {
+    background-color: lightblue;
+}
+
+.bookDiv {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.bookPic1 {
+  max-height: 500px;
+  max-width: 500px;
+  margin: auto;
+  border-radius: 10px;
+}

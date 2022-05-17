@@ -1,10 +1,12 @@
 // import React, { useState, useEffect } from "react";
 // import Axios from "axios";
-import "./App.css";
+// import "./App.css";
+// import "./css/Home.css"
 import { Route, Routes } from "react-router-dom";
 import AddBook from "./AddBook";
 import Home from "./Home";
 import UnreadBooks from "./UnreadBooks";
+// import stackOfBooks from "./books.png"
 
 function App() {
   // adding a book
@@ -48,11 +50,6 @@ function App() {
 
   return (
     <div>
-      <div>
-        <a href="/">Home</a>
-        <a href="/unread-books">Unread Books</a>
-        <a href="/add-book">Add Book</a>
-      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -60,6 +57,16 @@ function App() {
         <Route path="/add-book" element={<AddBook />} />
       </Routes>
 
+      {/* <div className="homeLinks">
+        <a href="/">Home</a>
+        <a href="/unread-books">Unread Books</a>
+        <a href="/add-book">Add Book</a>
+      </div>
+
+      <div className="bookDiv">
+        <img className="bookPic1" src={stackOfBooks} alt='books' />
+      </div> */}
+     
       {/* <div className="container">
         <label htmlFor="">Title: </label>
         <input

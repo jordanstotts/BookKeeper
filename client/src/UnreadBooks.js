@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import { text } from "express";
+import "./css/UnreadBooks.css"
+
 
 const UnreadBooks = () => {
   // getting / displaying books
@@ -27,59 +28,29 @@ const UnreadBooks = () => {
     Axios.delete(`http://localhost:6001/delete-book/${id}`);
   };
 
-//   const btn = document.getElementById('btn');
-
-//   btn.addEventListener('click', function onClick(event) {
-//     //  Change text color globally
-//     // document.body.style.color = 'darkgreen';
-  
-//     //  Change text color for clicked element only
-//     event.target.style.color = 'salmon';
-//   });
-
-// const finishedBooks = () => {
-//     // getting / displaying books
-//     const [, setUnreadBooks] = useState([]);
-  
-//     useEffect(() => {
-//       Axios.get("http://localhost:6001/book-list").then((res) => {
-//         setUnreadBooks(res.data.data.books);
-//       });
-//     }, []);
-// const [isFinished, setIsFinished] = useState(false)
-// const finishedBook = () => {
-//     // completedBooks = []
-//     setIsFinished = true
-//     // if (isFinished === true) {
-//     //     completedBooks.push()
-//     // }
-// }
-//   const btn = document.getElementById('btn');
-
-//   btn.addEventListener('click', function onClick(event) {
-//     //  Change text color globally
-//     // document.body.style.color = 'darkgreen';
-  
-//     //  Change text color for clicked element only
-//     event.target.style.color = 'salmon';
-//   });
-
-
+  const finishedBook = () => {
+    let greenCheck = document.getElementById("finished");
+    greenCheck.innerHTML = "☑";
+  };
 
   return (
     <div className="container">
+      <h1 className="homeHeader">Book Keeper</h1>
+      <div className="homeLinks">
+        <a href="/">Home</a>
+        <a href="/unread-books">Unread Books</a>
+        <a href="/add-book">Add Book</a>
+      </div>
       <h1>Unread Books</h1>
+      <div className="unreadBooksList">
       {unreadBooks.map((val, key) => {
         return (
-            // <div style={{backgroundColor: 'green'}}>
           <div key={key} className="book">
-            <h3>
-              <>Title: </>
-              {val.title}
-            </h3>
-            <p>Author: {val.author}</p>
-            <p>Genre: {val.genre}</p>
-            <p>Notes: {val.notes}</p>
+            <h1>{val.title}</h1>
+            <h3>{val.author}</h3>
+            <h3>{val.genre}</h3>
+            <p>{val.notes}</p>
+            {/* <div id='finished'></div> */}
             <input
               type="text"
               placeholder="Update Notes..."
@@ -87,7 +58,6 @@ const UnreadBooks = () => {
                 setNewNotes(e.target.value);
               }}
             />
-            {/* </div> */}
             <button
               className="update-btn"
               onClick={() => {
@@ -105,16 +75,18 @@ const UnreadBooks = () => {
               Delete
             </button>
             <button
-            id="btn"
               className="finished-btn"
-            
+              onClick={() => {
+                finishedBook();
+              }}
             >
               Finished
-              {/* Add emoji green check here */}
             </button>
           </div>
         );
       })}
+      <div id="finished"></div>
+      </div>
     </div>
   );
 };
