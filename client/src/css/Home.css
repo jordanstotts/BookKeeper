@@ -45,3 +45,50 @@ a:hover {
   margin: auto;
   border-radius: 10px;
 }
+
+
+/* ---------------------Mobile-------------------------------- */
+@media (max-width: 915px) {
+  .homeHeader {
+    font-size: 46pt;
+    font-family: "Lobster", cursive;
+    text-align: center;
+    margin: 150px auto auto auto;
+  }
+  
+  .homeLinks {
+    display: flex;
+    justify-content: space-around;
+    width: 350px;
+    margin: 75px auto 100px auto;
+    font-size: 10pt;
+  }
+  
+  a {
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    color: black;
+  }
+  
+  a:hover {
+      background-color: lightblue;
+    font-weight: 600;
+  
+  }
+  
+  .bookDiv {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+  
+  .bookPic1 {
+    max-height: 500px;
+    max-width: 325px;
+    margin: auto;
+    border-radius: 10px;
+  }
+
+}
