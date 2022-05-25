@@ -83,3 +83,22 @@ h1.unreadHeader {
   padding: 15px;
   text-align: center;
 }
+
+.notesText {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.update-btn {
+text-align: center;
+font-weight: 500;
+}
+
+.update-btn:hover {
+  cursor: pointer;
+  background-color: #eaea00;
+  opacity: 90%;
+  border: .5px solid black;
+font-weight: 600;
+}

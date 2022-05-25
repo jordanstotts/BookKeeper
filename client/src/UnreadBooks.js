@@ -59,6 +59,8 @@ const UnreadBooks = () => {
               <h5 className="genre">{val.genre}</h5>
               <p className="notes">{val.notes}</p>
 
+              <div className="notesText">
+                
               <textarea
                 type="text"
                 placeholder="Update Notes..."
@@ -74,6 +76,7 @@ const UnreadBooks = () => {
               >
                 Update
               </button>
+              </div>
               <br></br>
               <div className="finishedBtnDiv">
                 <button
