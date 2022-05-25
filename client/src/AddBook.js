@@ -15,6 +15,8 @@ const AddBook = () => {
       genre,
       notes,
     });
+      window.location.href = "http://localhost:3000/unread-books"
+    
   };
   return (
     <div className="container">

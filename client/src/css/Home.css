@@ -29,6 +29,8 @@ a {
 
 a:hover {
     background-color: lightblue;
+  font-weight: 600;
+
 }
 
 .bookDiv {
