@@ -57,6 +57,7 @@ const UnreadBooks = () => {
               >
                 X
               </button>
+              {/* <div id="finished"></div> */}
 
               <h1 className="title">{val.title}</h1>
               <h4 className="author">{val.author}</h4>
@@ -95,7 +96,7 @@ const UnreadBooks = () => {
             </div>
           );
         })}
-        <div id="finished"></div>
+        {/* <div id="finished"></div> */}
       </div>
     </div>
   );

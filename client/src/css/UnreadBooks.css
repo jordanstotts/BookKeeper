@@ -24,6 +24,8 @@
   border-radius: 5px;
   font-weight: bolder;
   text-align: center;
+  margin-bottom: 15px;
+
 }
 
 .finishedBtnDiv {
@@ -55,7 +57,7 @@ h1.unreadHeader {
   justify-content: center;
   border: 1.5px solid lightblue;
   background-color: #6bc0f9b0;
-  height: 450px;
+  height: auto;
   width: 400px;
 }
 
