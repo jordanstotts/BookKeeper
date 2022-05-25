@@ -25,3 +25,35 @@
   cursor: pointer;
   font-weight: 600;
 }
+
+
+/* -------------------------Mobile---------------------------------- */
+@media (max-width: 915px) {
+  .addBookForm {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 350px;
+    margin: auto;
+  }
+  
+  .addBookBtn {
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    width: 150px;
+    margin: -20px auto 100px auto;
+  }
+  
+  #addBtn {
+    height: 30px;
+    border: 0.5px solid black;
+    border-radius: 5px;
+  }
+  
+  #addBtn:hover {
+    background-color: #c3c2c2;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
