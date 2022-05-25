@@ -20,17 +20,21 @@ const UnreadBooks = () => {
       id: id,
       newNotes: newNotes,
     });
+    window.location.reload()
   };
 
   // delete books
   const deleteBook = (id) => {
     Axios.delete(`http://localhost:6001/delete-book/${id}`);
+    window.location.reload()
   };
 
   const finishedBook = () => {
     let greenCheck = document.getElementById("finished");
     greenCheck.innerHTML = "☑";
   };
+
+
 
   return (
     <div className="container">
