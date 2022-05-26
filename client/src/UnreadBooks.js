@@ -20,21 +20,14 @@ const UnreadBooks = () => {
       id: id,
       newNotes: newNotes,
     });
-    window.location.reload()
+    window.location.reload();
   };
 
   // delete books
   const deleteBook = (id) => {
     Axios.delete(`http://localhost:6001/delete-book/${id}`);
-    window.location.reload()
+    window.location.reload();
   };
-
-  const finishedBook = () => {
-    let greenCheck = document.getElementById("finished");
-    greenCheck.innerHTML = "☑";
-  };
-
-
 
   return (
     <div className="container">
@@ -44,7 +37,7 @@ const UnreadBooks = () => {
         <a href="/unread-books">Unread Books</a>
         <a href="/add-book">Add Book</a>
       </div>
-      <h1 className="unreadHeader">Unread Books</h1>
+      <h1 className="unreadHeader">Book List</h1>
       <div className="unreadBooksList">
         {unreadBooks.map((val, key) => {
           return (
@@ -57,46 +50,32 @@ const UnreadBooks = () => {
               >
                 X
               </button>
-              {/* <div id="finished"></div> */}
-
               <h1 className="title">{val.title}</h1>
               <h4 className="author">{val.author}</h4>
               <h5 className="genre">{val.genre}</h5>
               <p className="notes">{val.notes}</p>
 
               <div className="notesText">
-                
-              <textarea
-                type="text"
-                placeholder="Update Notes..."
-                onChange={(e) => {
-                  setNewNotes(e.target.value);
-                }}
-              />
-              <button
-                className="update-btn"
-                onClick={() => {
-                  updateNotes(val._id);
-                }}
-              >
-                Update
-              </button>
-              </div>
-              <br></br>
-              <div className="finishedBtnDiv">
+                <textarea
+                  type="text"
+                  placeholder="Update Notes..."
+                  onChange={(e) => {
+                    setNewNotes(e.target.value);
+                  }}
+                />
                 <button
-                  className="finished-btn"
+                  className="update-btn"
                   onClick={() => {
-                    finishedBook();
+                    updateNotes(val._id);
                   }}
                 >
-                  ✅
+                  Update
                 </button>
               </div>
+              <br></br>
             </div>
           );
         })}
-        {/* <div id="finished"></div> */}
       </div>
     </div>
   );

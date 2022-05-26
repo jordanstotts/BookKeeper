@@ -15,8 +15,7 @@ const AddBook = () => {
       genre,
       notes,
     });
-      window.location.href = "http://localhost:3000/unread-books"
-    
+    window.location.href = "http://localhost:3000/unread-books";
   };
   return (
     <div className="container">
@@ -65,7 +64,9 @@ const AddBook = () => {
         <br />
       </div>
       <div className="addBookBtn">
-        <button id="addBtn" onClick={addNewBook}>Add New Book</button>
+        <button id="addBtn" onClick={addNewBook}>
+          Add New Book
+        </button>
       </div>
     </div>
   );

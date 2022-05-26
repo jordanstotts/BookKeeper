@@ -17,10 +17,6 @@ const BookListSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  completed: {
-    type: Boolean,
-    required: false,
-  },
 });
 
 const BookList = mongoose.model("BookList", BookListSchema);

@@ -1,6 +1,6 @@
 import React from "react";
-import "./css/Home.css"
-import stackOfBooks from "./books.png"
+import "./css/Home.css";
+import stackOfBooks from "./books.png";
 
 const Home = () => {
   return (
